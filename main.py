@@ -3,7 +3,7 @@
 import configparser, subprocess, sys, time
 
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QDesktopWidget, QMessageBox
+from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QDesktopWidget, QMessageBox, QProgressBar
 
 
 class SelectWindow(QWidget):
@@ -28,8 +28,15 @@ class SelectWindow(QWidget):
   #      self.serial_label = self.build_label("Serial:", 48, 125)
 
         self.app1 = self.build_button("App №1", 200, 90, self.btn_click1)
-        self.app2 = self.build_button("App №2", 200, 140, self.btn_click2)
-        self.app3 = self.build_button("App №3", 200, 190, self.btn_click3)
+#        self.app2 = self.build_button("App №2", 200, 140, self.btn_click2)
+#        self.app3 = self.build_button("App №3", 200, 190, self.btn_click3)
+
+        self.progress = QProgressBar(self)
+        self.progress.setGeometry(200, 140, 300, 20)
+        self.progress.setMaximum(100)
+#        self.button = QPushButton('Start', self)
+#        self.button.move(200, 140)
+#        self.show()
 
         self.setWindowTitle('- Select applications - ')
         self.setFixedHeight(450)
@@ -52,17 +59,17 @@ class SelectWindow(QWidget):
 #            shell=True)
             "echo app1", shell=True)
 
-    def btn_click2(self):
-        subprocess.call(
+#    def btn_click2(self):
+#        subprocess.call(
 #            "rsync $args --password-file=/run/initramfs/memory/data/Progs/GlobalSlots/rsyncp -Lrv --progress --times --ignore-errors --delete-excluded  --force rsync://gup@update.gslots.win:49873/globalslots/plugins_dir/plugins/ ./plugins/ &",
 #            shell=True)
-            "echo app2", shell=True)
+#            "echo app2", shell=True)
 
-    def btn_click3(self):
-        subprocess.call(
+#    def btn_click3(self):
+#        subprocess.call(
 #            "rsync $args --password-file=/run/initramfs/memory/data/Progs/GlobalSlots/rsyncp -Lrv --progress --times --ignore-errors --delete-excluded  --force rsync://gup@update.gslots.win:49873/globalslots/plugins_dir/plugins/ ./plugins/ &",
 #            shell=True)
-            "echo app3", shell=True)
+#            "echo app3", shell=True)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
